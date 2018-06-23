@@ -6,19 +6,39 @@ const port = 3000;
 
 const server = http.createServer((req, res) => 
 {
-
-    if(req.url.includes('.css'))
+    if(req.url.indexOf('img') > 0)
+    {
+        res.statusCode = 200;
+        res.setHeader('Content-Type','image/png');
+        
+        let readStream = fs.createReadStream(__dirname + req.url);
+        readStream.on('error', (error) => {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/plain');
+            res.write('404 not found');
+            res.end();
+        })
+        readStream.pipe(res);
+    }
+    else if(req.url.indexOf('content') > 0)
     {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/css');
-        fs.createReadStream("content\\main.css").pipe(res);
+        let readStream = fs.createReadStream(__dirname + req.url);
+        readStream.on('error', (error) => {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/plain');
+            res.write('404 not found');
+            res.end();
+        })
+        readStream.pipe(res);
     }
-    else if(req.url == '/' || req.url.includes('.html'))
+    else if(req.url == '/')
     {
 
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
-        fs.createReadStream("view\\index.html").pipe(res);
+        fs.createReadStream('view\\index.html').pipe(res);
     }
     return;
 });
