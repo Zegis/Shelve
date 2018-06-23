@@ -6,39 +6,38 @@ const port = 3000;
 
 const server = http.createServer((req, res) => 
 {
-    if(req.url.indexOf('img') > 0)
+    if(req.url == '/')
     {
-        res.statusCode = 200;
-        res.setHeader('Content-Type','image/png');
-        
-        let readStream = fs.createReadStream(__dirname + req.url);
-        readStream.on('error', (error) => {
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain');
-            res.write('404 not found');
-            res.end();
-        })
-        readStream.pipe(res);
-    }
-    else if(req.url.indexOf('content') > 0)
-    {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/css');
-        let readStream = fs.createReadStream(__dirname + req.url);
-        readStream.on('error', (error) => {
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain');
-            res.write('404 not found');
-            res.end();
-        })
-        readStream.pipe(res);
-    }
-    else if(req.url == '/')
-    {
-
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         fs.createReadStream('view\\index.html').pipe(res);
+    }
+    else if(req.url.indexOf('content') > 0)
+    {
+        let ext = req.url.split('.')[1];
+
+        if(ext === 'css')
+        {
+            res.setHeader('Content-Type', 'text/css');
+        }
+        else
+        {
+            res.setHeader('Content-Type','image/png');
+        }
+
+        res.statusCode = 200;
+        let readStream = fs.createReadStream(__dirname + req.url);
+        readStream.on('error', (error) => {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/plain');
+            res.write('404 not found');
+            res.end();
+        })
+        readStream.pipe(res);
+    }
+    else {
+        res.statusCode = 400;
+        res.end();
     }
     return;
 });
