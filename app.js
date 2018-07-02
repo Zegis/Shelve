@@ -8,9 +8,7 @@ const server = http.createServer((req, res) =>
 {
     if(req.url == '/')
     {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
-        fs.createReadStream('view\\index.html').pipe(res);
+        require('./controllers/HomeController.js').route(req,res);
     }
     else if(req.url.indexOf('content') > 0)
     {
