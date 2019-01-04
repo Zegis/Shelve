@@ -2,3 +2,15 @@
     font-weight: normal;
     font-style: italic;
 }
+
+.overview{
+    border: 2px solid brown;
+    padding: 1%;
+    width: 45%;
+    float: left;
+    margin: 1%;
+}
+
+.overview p:first-child {
+    text-align: center;
+}

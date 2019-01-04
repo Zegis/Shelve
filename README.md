@@ -1,3 +1,3 @@
 # Shelve
 
-Simple page wrote with node.js on backend.
+Simple portfolio page with list of various project wrote with node.js on backend.
