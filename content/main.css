@@ -5,7 +5,7 @@
 
 .overview{
     border: 2px solid brown;
-    padding: 1%;
+    padding: 0.5% 1% 0% 1%;
     width: 45%;
     float: left;
     margin: 1%;
@@ -13,4 +13,16 @@
 
 .overview p:first-child {
     text-align: center;
+}
+
+.label {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.tags {
+    font-style: italic;
+    /* border: 2px solid brown; */
+    margin: 0.5% -2%;
+    background-color: bisque
 }
