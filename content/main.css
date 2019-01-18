@@ -3,13 +3,28 @@
     font-style: italic;
 }
 
-.overview{
+.shelve {
+    overflow: hidden;
     border-radius: 5% 5% 0 0;
+    background-color: #a22a2a;
+}
+
+.overview:first-of-type{
+    margin-left: 1.1%;
+}
+
+.overview{
     padding: 0.5% 1% 0% 1%;
-    width: 45%;
+    width: 30%;
     float: left;
-    margin: 1%;
-    background-color: #ff5500;
+    margin: 1% 0.5% 0.5% 0.5%;
+    background-color: #ff4400;
+}
+
+.overview iframe
+{
+    display: block;
+    margin: 0 auto;
 }
 
 h1,h2,h3,h4,h5,h6  {
@@ -26,5 +41,5 @@ h1,h2,h3,h4,h5,h6  {
     margin: 0.5% -2.2% 0%;
     padding-left: 1%;
     padding-bottom: 0.5%;
-    background-image: linear-gradient(#ff5500, brown);
+    background-image: linear-gradient(#ff5500, #a22a2a);
 }
