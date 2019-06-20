@@ -3,6 +3,15 @@
     font-style: italic;
 }
 
+#shelveHeader{
+    width: 0;
+    height: 0;
+    border-bottom: 110px #a22a2a solid;
+    border-left: 600px transparent solid;
+    border-right: 600px transparent solid;
+    margin:auto;
+}
+
 .shelve {
     overflow: hidden;
     border-radius: 5% 5% 0 0;
@@ -18,7 +27,7 @@
     width: 30%;
     float: left;
     margin: 1% 0.5% 0.5% 0.5%;
-    background-color: #ff4400;
+    background-color: #ff5500;
 }
 
 .overview iframe
